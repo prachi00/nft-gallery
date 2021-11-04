@@ -22,6 +22,7 @@
         label="sort.listed"
         size="is-medium"
       />
+      <ToggleLayout />
     </b-field>
     <slot />
   </div>
@@ -39,6 +40,7 @@ import { exist } from './exist'
     TypeTagInput: () => import('./TypeTagInput.vue'),
     Pagination: () => import('@/components/rmrk/Gallery/Pagination.vue'),
     BasicSwitch: () => import('@/components/shared/form/BasicSwitch.vue'),
+    ToggleLayout: () => import('@/components/rmrk/Gallery/ToggleLayout.vue')
   },
 })
 export default class SearchBar extends Vue {
