@@ -1,10 +1,26 @@
 <template>
   <div>
-    <div class="level m-4" v-if="nfts">
+    <div class="level m-4 collection" v-if="nfts">
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Items</p>
           <p class="title">{{ collectionLength }}</p>
+        </div>
+      </div>
+            <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Floor price</p>
+          <p class="title">
+            <Money :value="collectionFloorPrice" inline />
+          </p>
+        </div>
+      </div>
+            <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Volume traded</p>
+          <p class="title">
+            <Money :value="collectionTradedVolumeNumber" inline />
+          </p>
         </div>
       </div>
       <div class="level-item has-text-centered">
@@ -13,22 +29,14 @@
           <p class="title">{{ collectionSoldedNFT }}</p>
         </div>
       </div>
-      <div class="level-item has-text-centered">
+          <div class="level-item has-text-centered">
         <div>
-          <p class="heading">Floor price</p>
-          <p class="title">
-            <Money :value="collectionFloorPrice" inline />
-          </p>
+          <p class="heading">Distribution</p>
+          <p class="title">{{ (collectionLength /  collectionSoldedNFT).toFixed(2)}}</p>
         </div>
       </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Volume traded</p>
-          <p class="title">
-            <Money :value="collectionTradedVolumeNumber" inline />
-          </p>
-        </div>
-      </div>
+
+
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">24h Volume traded</p>
@@ -100,3 +108,17 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import "@/styles/variables";
+
+  .collection {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+</style>
